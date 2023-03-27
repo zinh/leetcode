@@ -33,7 +33,7 @@ class Solution2:
             s = numbers[left] + numbers[right]
             if s == target:
                 return [left +1, right + 1]
-            elif s > target:
+            if s > target:
                 right -= 1
             else:
                 left += 1
