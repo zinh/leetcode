@@ -1,7 +1,7 @@
 from typing import Optional
 
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None):
         self.val = val
         self.next = next
 
@@ -17,6 +17,18 @@ class ListNode:
             previous.next = node
             previous = node
         return head
+
+    def __iter__(self):
+        self.head = self
+        return self
+
+    def __next__(self):
+        if self.head is None:
+            raise StopIteration
+        else:
+            value = self.head.val
+            self.head = self.head.next
+            return value
 
 class Solution:
     def traverse(self, node, depth):
