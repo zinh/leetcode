@@ -1,22 +1,24 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        result = longest = 1
-        l = len(s)
-        pointer = 1
+        L = len(s)
+        if L == 0:
+            return 0
+        start = 0
+        pointer = start + 1
         h = { s[0] }
-        while pointer < l:
+        m = 1
+        while pointer < L:
             c = s[pointer]
-            print(h, c, result)
             if c in h:
-                result -= 1
+                h.discard(s[start])
+                start += 1
             else:
                 h.add(c)
-                result += 1
-                if longest < result:
-                    longest = result
-            pointer += 1
-        return longest
+                pointer += 1
+                if m < (pointer - start):
+                    m = (pointer - start)
+        return m
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.lengthOfLongestSubstring('abcabcd'))
+    print(s.lengthOfLongestSubstring('pwwkew'))
