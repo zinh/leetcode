@@ -22,8 +22,9 @@ class Solution:
             if col + 1 < max_col:
                 results.append((row, col + 1))
             return results
-        current_region = 1
+        current_region = 2
         h = {}
+        print_grid(grid)
         for row_id, row in enumerate(grid):
             for col_id, cell in enumerate(row):
                 if cell == 1:
